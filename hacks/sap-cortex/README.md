@@ -2,11 +2,9 @@
 
 ## Introduction
 
-In this hack, you’ll implement the full lifecycle of an ML project. We’ll provide you with a sample code base and you’ll work on automating continuous integration (CI), continuous delivery (CD), and continuous training (CT) for a machine learning (ML) system. 
+WIP
 
-| ![MLOps Overview](https://cloud.google.com/static/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-4-ml-automation-ci-cd.svg) |
-| :--: |
-| _Picture is from [this article](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)_ |
+In this hack, you’ll get the hands on experience with the Google Cloud Cortex Framework. You will install the Cortex data foundation in the precofigured environment. After that, you will explore both the data foundation using the test data delivered with Cortex, as well as build your first Looker Studio dashboards to run the data analysis.
 
 ## Learning Objectives
 
