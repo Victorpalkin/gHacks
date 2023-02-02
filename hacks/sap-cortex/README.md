@@ -1,4 +1,4 @@
-# Implementing MLOps on GCP
+# SAP Analytics at Scale with Google Cloud Cortex Framework
 
 ## Introduction
 
@@ -26,13 +26,10 @@ This hack will help you explore the following tasks:
 
 ## Challenges
 
-- Challenge 1: Let’s start exploring!
-- Challenge 2: If it isn’t in version control, it doesn’t exist
-- Challenge 3: You break the build, you buy cake
-- Challenge 4: Automagic training with pipelines
-- Challenge 5: Make it work and make it scale
-- Challenge 6: Monitor your models
-- Challenge 7: Close the loop
+- Challenge 1: Deploy the Cortex Foundation
+- Challenge 2: Let's Start to explore
+- Challenge 3: No dashboards, no self-service analytics
+- Challenge 4: No Code AI is the best AI
 
 ## Prerequisites
 
@@ -43,7 +40,8 @@ This hack will help you explore the following tasks:
 
 ## Contributors
 
-- Murat Eken
+- Viktor Palkin
+- Ekaterina Kruse
 
 ## Challenge 1: Let’s start exploring!
 
@@ -164,88 +162,6 @@ Once the pipeline is triggered, it will take ~10 minutes to complete.
 
 - Running [Python modules from the command line](https://docs.python.org/3/using/cmdline.html#cmdoption-m)
 - Running [Vertex AI Pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/run-pipeline#console) on the console
-
-## Challenge 5: Make it work and make it scale
-
-### Introduction
-
-Having a model is only the first step, in order to use the model it has to be deployed to an endpoint. Vertex AI Endpoints provide a managed service for serving predictions.
-
-### Description
-
-Create a new Vertex AI Endpoint and deploy the freshly trained model. Use the smallest instance size but make sure that it can scale to more than 1 instance. 
-
-<ql-infobox>
-The deployment of the model will take ~10 minutes to complete.
-</ql-infobox>
-
-<ql-warningbox>
-Note that the Qwiklab environment we're using has a quota on the endpoint throughput (30K requests per minute), **do not exceed that**.
-</ql-warningbox>
-
-### Success Criteria
-
-1. The model has been deployed to an endpoint and can serve requests
-2. Show that the Endpoint has scaled to more than 1 instance under load
-3. No code change is needed for this challenge
-
-### Tips
-
-- In order to generate load you can use any tool you want, but the easiest approach would be to install [apache-bench](https://httpd.apache.org/docs/2.4/programs/ab.html) on Cloud Shell or your notebook environment.
-
-### Learning Resources
-
-- Documentation on [Vertex AI Endpoints](https://cloud.google.com/vertex-ai/docs/predictions/overview)
-- More info on the [request data format](https://cloud.google.com/vertex-ai/docs/predictions/get-predictions#request-body-details)
-
-## Challenge 6: Monitor your models
-
-### Introduction
-
-There are times when the training data becomes not representative anymore because of changing demographics, trends etc. To catch any skew or drift in feature distributions or even in predictions, it is necessary to monitor your model performance continuously. Luckily Vertex AI Endpoints have Model Monitoring capabilities that you can use for that purpose.
-
-### Description
-
-Turn on Training-serving skew detection for your model, use an hourly granularity to get alerts. Send at least 10K prediction requests to collect monitoring data.
-
-### Success Criteria
-
-1. Show that the Model Monitoring is running successfully for the endpoint that’s created in the previous challenge
-2. By default Model Monitoring keeps request/response data in a BigQuery dataset, find and show that data
-
-### Tips
-
-- You can use the sample.csv file from challenge 1 as the baseline data
-- You can use the same tool you’ve used for the previous challenge to generate the requests, make sure to include some data that has a different distribution than the training data.
-
-### Learning Resources
-
-Introduction to [Vertex AI Model Monitoring](https://cloud.google.com/vertex-ai/docs/model-monitoring/overview)
-
-## Challenge 7: Close the loop
-
-### Introduction
-
-If you’ve completed all of the previous challenges, you’re now ready to bring it all together. This task is all about automating the whole process, so that when Model Monitoring raises an alert, a new model is trained and deployed. 
-
-### Description
-
-<ql-infobox>
-For this challenge we’ll keep things simple, we’ll re-use the original training data to re-train and won’t do anything if the model is not better, but in real world you’d be using a combination of existing data with the new data, and take manual actions if automatic re-training doesn’t yield better results. Note also that Vertex AI Endpoints allow deploying multiple versions of a model to enable blue-green style deployments, but we’ll ignore that too, the latest version will get all the traffic for this task.
-</ql-infobox>
-
-Use the provided build pipeline (`clouddeploy.yaml`) to create a new build configuration. Make sure that it’s only triggered when a webhook is called. Also provide the necessary variables, such as the model training code version, endpoint name etc. Configure Log based alerts for Model Monitoring, and use webhooks as a notification channel to trigger the build.
-
-### Success Criteria
-
-1. There’s a correctly configured build pipeline that can be triggered through webhooks only
-2. Model Monitoring alerts can trigger the mentioned build through Log based alerts.
-3. There’s at least one successful build
-
-### Tips
-
-- Cloud Build supports inline yaml as well
-- You can create/update a Monitoring Job with the `gcloud` cli which has more configuration options than the UI
 
 ### Learning Resources
 
