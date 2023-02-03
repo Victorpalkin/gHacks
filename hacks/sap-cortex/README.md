@@ -4,6 +4,10 @@
 
 In this hack, you’ll get the hands on experience with the Google Cloud Cortex Framework. You will install the Cortex data foundation in the precofigured environment. After that, you will explore both the data foundation using the test data delivered with Cortex, as well as build your first Looker Studio dashboards to run the data analysis and preditions.
 
+In the high level architecture picture, you can see the highlighted components of the Cortex framework, you will get a hands on experience with: data foundation, analytic dashboards, AI-ML models.
+
+![High-level Cortex architecture](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/CortexOverview.png)
+
 ## Learning Objectives
 
 This hack will help you explore the following tasks:
