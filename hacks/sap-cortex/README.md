@@ -39,7 +39,7 @@ This hack will help you explore the following tasks:
 - Viktor Palkin
 - Ekaterina Kruse
 
-## Challenge 1: Let’s start exploring!
+## Challenge 1: Deploy the Cortex Foundation
 
 ### Introduction
 
@@ -71,36 +71,41 @@ Unfortunately at the moment it's not possible to create Managed Notebooks in Qwi
 
 - Documentation on [Vertex AI Workbench](https://cloud.google.com/vertex-ai/docs/workbench/managed/introduction)
 
-## Challenge 2: If it isn’t in version control, it doesn’t exist
+## Challenge 2: Let's Start to explore
 
 ### Introduction
 
-The objective of this challenge is to create and configure a Git repository so that the code can be version controlled. You could use any external Git repository (Github/BitBucket/Gitlab etc) but the easiest way for this challenge is to use a Cloud Source Repository on GCP.
+The objective of this challenge is to explore the data foundation deployed on the previous step. For this, we prepared a few questions for you, which you can answer using the data foundation views and the provided sample Cortex data. In case you are not familiar with SQL, you can use hints.
 
 ### Description
 
-If you have completed the previous challenge, you should have the source code already unpacked on your Managed Notebook. But you’re free to complete this challenge on another environment such as Cloud Shell or your local machine.
+If you have completed the previous challenge, you can now see the deployed Cortex datasets in your BigQuery. Now, usign the reporting views, please try to answer the following questions:
 
-Create a Cloud Source Repository, configure access through SSH.
-
-Make sure that the source code is pushed to the freshly created repository and can be cloned from it.
+- Find out how many differnt products are in the product group "002" (Electronics)
+- Review the view "MaterialsMD" that you used to answer the previous question. What source tables is this view built on?
+- Let continue our review of the product groups Electronics. Now, please, identify the product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
+- Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on?
+- Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
 
 ### Success Criteria
 
-1. There’s a new Cloud Source Repository 
-2. The code base is pushed to Cloud Source Repository
-3. At least one team member can access the repository from the command line
-4. No code changes are needed for this challenge
+1. Your SQL statements to datasets are returning results and you can answer the formulated questions
+2. You can now review the source tables that constitute COrtex reporting views
 
 ### Tips
 
-- You already have a terminal available on the notebook that you’ve created as part of the previous challenge. That terminal has all the tools you need to complete this challenge.
+- We recommend you to come up with your own solution to get a hands on experience with the data foundation in Cortex. 
+- In case you are not familiar with SQL syntax, here are the SQL statements we prepared for you to answer the questions above. You need to idetify which statement answers which question.
+
+TODO: add SQL here
+
+- To view how a view was built and which tables constitute a view, please, use the tab "Details" and scroll down to view a query.
 
 ### Learning Resources
 
-- How-to guides for [Cloud Source Repository](https://cloud.google.com/source-repositories/docs/how-to)
+- You can review the query syntax for Google BigQuery [here](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
 
-## Challenge 3: You break the build, you buy cake
+## Challenge 3: No dashboards, no self-service analytics
 
 ### Introduction
 
@@ -125,7 +130,7 @@ Once things look fine locally, set up a Cloud Build that’s triggered when code
 
 How-to guides for [Cloud Build](https://cloud.google.com/build/docs/how-to)
 
-## Challenge 4: Automagic training with pipelines
+## Challenge 4: No Code AI is the best AI
 
 ### Introduction
 
