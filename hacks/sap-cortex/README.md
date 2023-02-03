@@ -67,15 +67,20 @@ If you have completed the previous challenge, you can now see the deployed Corte
 
 Now, usign the  reporting views, please try to answer the following questions:
 
-- Find out how many differnt products are in the product group "002" (Electronics)
+- **Task 1.** Find out how many different products are in the product group "002" (Electronics)
 Use the following query (substitute the <Projec name> with the name of your own project):
 
 ```
 SELECT count(MaterialNumber_MATNR) FROM `<Project name>.REPORTING.MaterialsMD` where MaterialGroup_MATKL="002"
 ```
 
-- Review the view "MaterialsMD"that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
-- Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
+- **Task 2.** Review the view "MaterialsMD" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
+
+Please, see the following screenshot as an example on how to find Details of a View in BigQuery: 
+
+![See Details on a BigQuery view](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ViewDetails.png)
+  
+- **Task 3.** Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
   
 Use the following query (substitute the <Projec name> with the name of your own project):
 
@@ -84,8 +89,8 @@ SELECT MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldUnits FR
 ```
 
   
-- Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
-- Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
+- **Task 4.** Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
+- **Task 5.** Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
 
 Use the following query (substitute the <Projec name> with the name of your own project):
 
