@@ -79,13 +79,35 @@ The objective of this challenge is to explore the data foundation deployed on th
 
 ### Description
 
-If you have completed the previous challenge, you can now see the deployed Cortex datasets in your BigQuery. Now, usign the reporting views, please try to answer the following questions:
+If you have completed the previous challenge, you can now see the deployed Cortex datasets in your BigQuery. To explore the deployed dataset, please, answer the following questions. For some of them, you would need to run SQL queries directly in the reporting datasets. We anticipate that you might not code in your daily job and therefore, we provide ready to use SQL statements for every question. Feel free to use them! If you have SQL experience and you have time, we encourage you to come up with the solution on your own.
+
+Now, usign the  reporting views, please try to answer the following questions:
 
 - Find out how many differnt products are in the product group "002" (Electronics)
-- Review the view "MaterialsMD" that you used to answer the previous question. What source tables is this view built on?
-- Let continue our review of the product groups Electronics. Now, please, identify the product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
-- Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on?
+Use the following query (substitute the <Projec name> with the name of your own project):
+
+```
+SELECT count(MaterialNumber_MATNR) FROM `<Project name>.REPORTING.MaterialsMD` where MaterialGroup_MATKL="002"
+```
+
+- Review the view "MaterialsMD"that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
+- Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
+  
+Use the following query (substitute the <Projec name> with the name of your own project):
+
+```
+SELECT MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldUnits FROM `<Project name>.REPORTING.SalesOrders` where MaterialGroup_MATKL = "002" and Extract(YEAR from DocumentDate_AUDAT) = 2016 group by MaterialNumber_MATNR order by soldUnits desc limit 3
+```
+
+  
+- Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
 - Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
+
+Use the following query (substitute the <Projec name> with the name of your own project):
+
+```
+SELECT max(MaxTemp) FROM `<Project name>.REPORTING.Weather` where extract(YEAR from WeekStartDate) = 2021
+```
 
 ### Success Criteria
 
@@ -95,10 +117,7 @@ If you have completed the previous challenge, you can now see the deployed Corte
 ### Tips
 
 - We recommend you to come up with your own solution to get a hands on experience with the data foundation in Cortex. 
-- In case you are not familiar with SQL syntax, here are the SQL statements we prepared for you to answer the questions above. You need to idetify which statement answers which question.
-
-TODO: add SQL here
-
+- In case you are not familiar with SQL syntax, please, use the provided SQL statements for each question.
 - To view how a view was built and which tables constitute a view, please, use the tab "Details" and scroll down to view a query.
 
 ### Learning Resources
