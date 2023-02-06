@@ -123,11 +123,18 @@ In this challenge, we will explore the possibility to analyze the data using the
 ### Description
 If you have completed Challenge 1, you can now see the deployed Cortex datasets in your BigQuery. Note, that Challenge 2 is not a prerequisite for this one. 
   
-In your data foundation in "REPORTING" dataset, please find the "SalesOrders" view. Export the data into Looker Studio by selecting the view and then Export - Explore with Looker Studio. You will immediately see some dashboards.
+In your data foundation in "REPORTING" dataset, please find the "SalesOrders" view. Export the data into Looker Studio by selecting the view and then Export - Explore with Looker Studio. 
+See the screenshot below for your reference. 
+  
+![Export Looker Studio](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ExportLooker.png).
+
+You will now immediately see some dashboards.
   
 Let us explore how to modify dashboards in Looker Studio to get the required insights from the data.
-1. Click on the graph showing the dependency of "NumberOfSerialNumbers" on "Item_POSNR" and take a look at how the quiry for this dashboard was built.
-2. Please, modify this chart to see the number of sold units (CumulativeOrderQuantity_KWMENG) for each product (MaterialNumber_MATNR) for the product group "Electronics" (MaterialGroup_MATKL = 002) and for the year 2016 (DocumentDate_AUDAT is between 01.01.2016 and 31.12.2016). Which product from the product group Electronis is sold the most in 2016?
+1. Click on the graph showing the dependency of "NumberOfSerialNumbers" on "Item_POSNR" and take a look at how the quiry for this dashboard was built. 
+2. Please, modify this chart to see the number of sold units (CumulativeOrderQuantity_KWMENG) for each product (MaterialNumber_MATNR) for the product group "Electronics" (MaterialGroup_MATKL = 002) and for the year 2016 (DocumentDate_AUDAT is between 01.01.2016 and 31.12.2016). For that, you need to modify the "Chart setup", see the example on the screenshot below.
+![Modify chart setup](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ChartSetup.png)
+Which product from the product group Electronis is sold the most in 2016?
 
 ### Success Criteria
 1. You are able to export the data to the Looker Studio and see the charts
