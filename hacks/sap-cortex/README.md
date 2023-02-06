@@ -28,10 +28,8 @@ The instructions are minimal, meaning that you need to figure out things :) Howe
 
 ## Prerequisites
 
-- Knowledge of Python
-- Knowledge of Git
 - Basic knowledge of GCP
-- Access to a GCP environment
+- Basic knowledge of SAP data models
 
 ## Contributors
 
