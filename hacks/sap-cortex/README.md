@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this hack, you’ll get the hands on experience with the Google Cloud Cortex Framework. You will install the Cortex data foundation in the precofigured environment. After that, you will explore both the data foundation using the test data delivered with Cortex, as well as build your first Looker Studio dashboards to run the data analysis and preditions.
+In this hack, you’ll get the hands on experience with the Google Cloud Cortex Framework. You will review the pre-installed Cortex data foundation. After that, you will explore both the data foundation using the test data delivered with Cortex, as well as build your first Looker Studio dashboards to run the data analysis and preditions.
 
 In the high level architecture picture, you can see the highlighted components of the Cortex framework, you will get a hands on experience with: data foundation, analytic dashboards, AI-ML models.
 
@@ -12,17 +12,25 @@ In the high level architecture picture, you can see the highlighted components o
 
 This hack will help you explore the following tasks:
 
-- Setting up Google Cortex framework
-- Exploring essential components of the Cortex data foundation
+- Exploring Google BigQuery and essential components of the Cortex data foundation
 - Building a simple dashboard using Cortex data and Looker Studio
 - Exploring how you can leverage AI on top of Cortex data
 
-The instructions are minimal, meaning that you need to figure out things :) However, we also anticipate that participants might have different level of experience with the used technical tools and different roles and goals. Therefore, the Challenges 2-4 can be explored independently from each other. Just choose the topic you are interested to explore. You can of course do all the challenges in case you have time and are willing to. Only the Challenge 1 (Deploy the Cortex Foundation) is required to be completed before you can move to Challenges 2-4.
+The instructions are minimal, meaning that you need to figure out things :) However, we also anticipate that participants might have different level of experience with the used technical tools and different roles and goals. Therefore, the Challenges 1-4 can be explored independently from each other. Just choose the topic you are interested to explore. You can of course do all the challenges in case you have time and are willing to.
+
+In each challenge below, you will find hints that will help you to find solutions faster. We recommend you to find the solution on your own, but feel free to use hints if you are stuck. Here is the example:
+
+<details>
+  <summary>Hint - open me if you are stuck</summary>
+  
+  Here are some helpful ideas!
+  
+</details>
 
 ## Challenges
 
-- Challenge 1: Deploy the Cortex Foundation
-- Challenge 2: Let's Start to explore
+- Challenge 1: Review the pre-installed Cortex Data Foundation
+- Challenge 2: Let's start to explore
 - Challenge 3: No dashboards, no self-service analytics
 - Challenge 4: No Code AI is the best AI
 
@@ -36,26 +44,36 @@ The instructions are minimal, meaning that you need to figure out things :) Howe
 - Viktor Palkin
 - Ekaterina Kruse
 
-## Challenge 1: Deploy the Cortex Foundation
+## Challenge 1: Review the pre-installed Cortex Data Foundation
 
 ### Introduction
-
-
+This the warm-up task, where you will explore the basics of Google BigQuery and Google Cortex Framework content using GCP console.
 
 ### Description 
+From your GCP console, open the BigQuery. You will see the Cortex datasets deployed for you by us during the preparation to this lab. Take a look at the deployed datasets and corresponding tables. Can you explain the purpose of each dataset?
 
+<details>
+  <summary>Cortex datasets overview</summary>
 
+  - SAP_RAW: contains the raw replicated data from SAP tables.
+  - SAP_CDC_PROCESSED: contains the same set of tables but the actual records here are only the result of the processed change data records. 
+  - SAP_MODELS: provides an example of how Cortex supports the usage of ML models inside of BigQuery. 
+  - SAP_REPORTING: contains a powerful collection of business views that will translate the raw SAP table structure into business-language.
+  - SFDC_RAW: contains the raw replicated data from Salesforce tables.
+  - SFDC_CDC_PROCESSED: contains the same set of tables as SFDC_RAW but the actual records here are only the result of the processed change data records. 
+  - SFDC_REPORTING: contains a powerful collection of business views that will translate the raw Salesforce table structure into business-language.
+</details>
+
+In the next task, you will explore those datasets in more details.
 
 ### Success Criteria
-
-
-
-### Tips
-
-
+- You found the deployed datasets in Google BigQuery in GCP console.
+- You can briefly describe the purpose of each dataset.
 
 ### Learning Resources
-
+- [Google BigQuery documentation](https://cloud.google.com/bigquery)
+- [Google Cortex Framework documentation](https://cloud.google.com/solutions/cortex)
+- [Google Cortex Framework - data foundation](https://github.com/GoogleCloudPlatform/cortex-data-foundation)
 
 ## Challenge 2: Let's Start to explore
 
