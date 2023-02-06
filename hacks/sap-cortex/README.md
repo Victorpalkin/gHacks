@@ -118,20 +118,27 @@ SELECT max(MaxTemp) FROM `<Project name>.REPORTING.Weather` where extract(YEAR f
 ## Challenge 3: No dashboards, no self-service analytics
 
 ### Introduction
-
+In this challenge, we will explore the possibility to analyze the data using the Looker Studio. The objective of this task is to learn how to export data to Looker Studio and build simple ad-hoc dashboards.
 
 ### Description
-
+If you have completed Challenge 1, you can now see the deployed Cortex datasets in your BigQuery. Note, that Challenge 2 is not a prerequisite for this one. 
+  
+In your data foundation in "REPORTING" dataset, please find the "SalesOrders" view. Export the data into Looker Studio by selecting the view and then Export - Explore with Looker Studio. You will immediately see some dashboards.
+  
+Let us explore how to modify dashboards in Looker Studio to get the required insights from the data.
+1. Click on the graph showing the dependency of "NumberOfSerialNumbers" on "Item_POSNR" and take a look at how the quiry for this dashboard was built.
+2. Please, modify this chart to see the number of sold units (CumulativeOrderQuantity_KWMENG) for each product (MaterialNumber_MATNR) for the product group "Electronics" (MaterialGroup_MATKL = 002) and for the year 2016 (DocumentDate_AUDAT is between 01.01.2016 and 31.12.2016). Which product from the product group Electronis is sold the most in 2016?
 
 ### Success Criteria
-
-
+1. You are able to export the data to the Looker Studio and see the charts
+2. You have modified the dashboard and identified the product which was sold most often in 2016
 
 ### Tips
-
+In case you have time, please, try to combine the sales order data analysis with the weather dataset using Blends. Try to identify the influence of temperature on sales amounts depending on product groups.
 
 ### Learning Resources
-
+- Looker Studio documentation is available [here](https://cloud.google.com/looker-studio)
+- In case you plan to combine your sales order data with the weather dataset, please reivew [How blends work](https://support.google.com/looker-studio/answer/9061420?hl=en) in Google Cloud documentation.
 
 ## Challenge 4: No Code AI is the best AI
 
