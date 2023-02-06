@@ -6,7 +6,7 @@ In this hack, you’ll get the hands on experience with the Google Cloud Cortex 
 
 In the high level architecture picture, you can see the highlighted components of the Cortex framework, you will get a hands on experience with: data foundation, analytic dashboards, AI-ML models.
 
-![High-level Cortex architecture](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/CortexOverview.png)
+![High-level Cortex architecture](images/CortexOverview.png)
 
 ## Learning Objectives
 
@@ -106,7 +106,7 @@ Now, usign the  reporting views, please try to answer the following questions:
   <summary>Hint - open me if you are stuck</summary>
   Please, see the following screenshot as an example on how to find Details of a View in BigQuery: 
     
-    ![See Details on a BigQuery view](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ViewDetails.png)
+    ![See Details on a BigQuery view](images/ViewDetails.png)
 
   </details>
   
@@ -126,7 +126,7 @@ Now, usign the  reporting views, please try to answer the following questions:
 - **Task 5.** Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
     <details>
     <summary>Hint - open me if you are stuck</summary>
-    Use the following query (substitute the <Projec name> with the name of your own project):
+    Use the following query (substitute the <Project name> with the name of your own project):
 
     ```
     SELECT max(MaxTemp) FROM `<Project name>.REPORTING.Weather` where extract(YEAR from WeekStartDate) = 2021
@@ -161,7 +161,7 @@ In your data foundation in "REPORTING" dataset, please find the "SalesOrders" vi
   
   See the screenshot below for your reference. 
   
-  ![Export Looker Studio](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ExportLooker.png).
+  ![Export Looker Studio](images/ExportLooker.png).
 
   
 </details>
@@ -177,7 +177,7 @@ Let us explore how to modify dashboards in Looker Studio to get the required ins
   
   See the screenshot below for your reference. 
   
-  ![Modify chart setup](https://github.com/Victorpalkin/gHacks/blob/palkin-ekakruse-ghack/hacks/sap-cortex/images/ChartSetup.png)
+  ![Modify chart setup](images/ChartSetup.png)
  
 </details>
 
