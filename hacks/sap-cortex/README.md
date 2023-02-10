@@ -20,13 +20,8 @@ The instructions are minimal, meaning that you need to figure out things :) Howe
 
 In each challenge below, you will find hints that will help you to find solutions faster. We recommend you to find the solution on your own, but feel free to use hints if you are stuck. Here is the example:
 
-<details>
-  <summary>Hint - open me if you are stuck</summary>
+[Hint - open me if you are stuck](resources/hint0.md)
   
-  Here are some helpful ideas!
-  
-</details>
-
 ## Challenges
 
 - Challenge 1: Review the pre-installed Cortex Data Foundation
