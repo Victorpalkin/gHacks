@@ -80,7 +80,7 @@ To explore the Cortex dataset in Google BigQuery, please, answer the following q
 
 Now, usign the reporting views, please try to answer the following questions:
 
-- **Task 1.** Find out how many different products are in the product group "002" (Electronics)
+**Task 1.** Find out how many different products are in the product group "002" (Electronics)
 
 **Hint:**
 Use the following query (substitute the <Project name> with the name of your own project):
@@ -89,13 +89,13 @@ Use the following query (substitute the <Project name> with the name of your own
   SELECT count(MaterialNumber_MATNR) FROM `<Project name>.REPORTING.MaterialsMD` where MaterialGroup_MATKL="002"
   ```
 
-- **Task 2.** Review the view "MaterialsMD" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
+**Task 2.** Review the view "MaterialsMD" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
   
 **Hint:** 
 Please, see the following screenshot as an example on how to find Details of a View in BigQuery: 
 ![See Details on a BigQuery view](images/ViewDetails.png)
   
-- **Task 3.** Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2020.
+**Task 3.** Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2020.
   
  **Hint:**
 Use the following query (substitute the <Project name> with the name of your own project):
@@ -103,9 +103,9 @@ Use the following query (substitute the <Project name> with the name of your own
   ```
   SELECT MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldUnits FROM `<Project name>.REPORTING.SalesOrders` where MaterialGroup_MATKL =   "002" and Extract(YEAR from DocumentDate_AUDAT) = 2020 group by MaterialNumber_MATNR order by soldUnits desc limit 3
   ```  
-- **Task 4.** Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
+**Task 4.** Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
   
-- **Task 5.** Now, let us explore the Trends dataset. Please, find out the trends for laptops (HierarchyText = 'Laptop Computer') in every months (sum up InterestOverTime by month) of year 2020. Find out months with the highest and the lowest trends.
+**Task 5.** Now, let us explore the Trends dataset. Please, find out the trends for laptops (HierarchyText = 'Laptop Computer') in every months (sum up InterestOverTime by month) of year 2020. Find out months with the highest and the lowest trends.
 
 **Hint:** 
 Use the following query (substitute the <Project name> with the name of your own project):
@@ -133,10 +133,12 @@ Use the following query (substitute the <Project name> with the name of your own
 ## Challenge 3: Explore the data in Looker Studio
 
 ### Introduction
-In this challenge, we will explore the possibility to analyze the data using the Looker Studio. The objective of this task is to learn how to export data to Looker Studio and build simple ad-hoc dashboards.
+In this challenge, we will explore SAP and non-SAP data available in Cortex test dataset using the Looker Studio. The objective of this task is to learn how to export data to Looker Studio and build simple ad-hoc dashboards.
 
 ### Description
-  
+
+**Task 1.** Analyse sales quantities by product in year 2020
+
 First, run the following SQL query to limit the fields we want to analyze in a dashboard:
   
   ```
@@ -160,6 +162,39 @@ See the screenshot below for your reference.
 ![Modify chart setup](images/ChartSetup.png)
 
 Which product from the product group Electronis is sold the most in 2020?
+
+**Task 2.** Combine SAP sales data with Google public trends dataset 
+So far, we have explored SAP data in the Looker Studio. But the real value and interesting insights come from combining SAP and non-SAP datasets, such as Google trends. Let us explore how you can combine and visualize these data.
+
+As a preparation, let us build a quiry that combines sales orders and trends datasets. For that, you can use the following SQL query:
+
+```
+SELECT salesOrders.month, HierarchyText, soldQuantity, InterestOverTime
+from
+-- sales quantities for each month for the product "DE_SPARE" (belongs to the group "Electronics") in year 2020
+(SELECT extract(month from DocumentDate_AUDAT) as month, MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldQuantity 
+FROM `<Project name>.REPORTING.SalesOrders` 
+where MaterialNumber_MATNR = 'DE_SPARE' and extract(year from DocumentDate_AUDAT) = 2020 
+group by month, MaterialNumber_MATNR
+order by month) as salesOrders
+
+inner join 
+
+-- trends for each month for the term "Laptop Computer" in year 2020
+(SELECT extract(month from WeekStart) as month, HierarchyText, sum(InterestOverTime) as InterestOverTime 
+FROM `<Project name>.REPORTING.Trends` 
+where HierarchyText = 'Laptop Computer' and extract(year from WeekStart) = 2020 
+group by month, HierarchyText) as trends
+
+on
+salesOrders.month = trends.month
+
+order by
+month
+```
+
+Now, we can explore the results in Looker Studio by choosing "Explore with Looker Studio".
+
 
 ### Success Criteria
 1. You are able to export the data to the Looker Studio and see the charts
