@@ -95,13 +95,13 @@ Use the following query (substitute the <Project name> with the name of your own
 Please, see the following screenshot as an example on how to find Details of a View in BigQuery: 
 ![See Details on a BigQuery view](images/ViewDetails.png)
   
-- **Task 3.** Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2016.
+- **Task 3.** Let continue our review of the product groups Electronics. Now, please, identify the top three product from the product group "002" (Electronics) with the biggest amount of sold units in 2020.
   
  **Hint:**
 Use the following query (substitute the <Project name> with the name of your own project):
 
   ```
-  SELECT MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldUnits FROM `<Project name>.REPORTING.SalesOrders` where MaterialGroup_MATKL =   "002" and Extract(YEAR from DocumentDate_AUDAT) = 2016 group by MaterialNumber_MATNR order by soldUnits desc limit 3
+  SELECT MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldUnits FROM `<Project name>.REPORTING.SalesOrders` where MaterialGroup_MATKL =   "002" and Extract(YEAR from DocumentDate_AUDAT) = 2020 group by MaterialNumber_MATNR order by soldUnits desc limit 3
   ```  
 - **Task 4.** Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
   
@@ -152,17 +152,17 @@ You will now immediately see some dashboards.
   
 Let us explore how to modify dashboards in Looker Studio to get the required insights from the data.
 1. Click on the graph showing the dependency of "Record Count" on "DocumentDate_AUDAT" and take a look at how the quiry for this dashboard was built. 
-2. Please, modify this chart to see the number of sold units (CumulativeOrderQuantity_KWMENG) for each product (MaterialNumber_MATNR) for the product group "Electronics" (MaterialGroup_MATKL = 002) and for the year 2016 (DocumentDate_AUDAT is between 01.01.2016 and 31.12.2016). For that, you need to modify the "Chart setup". 
+2. Please, modify this chart to see the number of sold units (CumulativeOrderQuantity_KWMENG) for each product (MaterialNumber_MATNR) for the product group "Electronics" (MaterialGroup_MATKL = 002) and for the year 2020 (DocumentDate_AUDAT is between 01.01.2020 and 31.12.2020). For that, you need to modify the "Chart setup". 
 
 **Hint:** Changing the chart parameters
 See the screenshot below for your reference. 
 ![Modify chart setup](images/ChartSetup.png)
 
-Which product from the product group Electronis is sold the most in 2016?
+Which product from the product group Electronis is sold the most in 2020?
 
 ### Success Criteria
 1. You are able to export the data to the Looker Studio and see the charts
-2. You have modified the dashboard and identified the product which was sold most often in 2016
+2. You have modified the dashboard and identified the product which was sold most often in 2020
 
 ### Tips
 In case you have time, please, try to combine the sales order data analysis with the weather dataset using Blends. Try to identify the influence of temperature on sales amounts depending on product groups.
