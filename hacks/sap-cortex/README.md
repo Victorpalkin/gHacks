@@ -105,15 +105,16 @@ Use the following query (substitute the <Project name> with the name of your own
   ```  
 - **Task 4.** Review the view "SalesOrders" that you used to answer the previous question. What source tables is this view built on? Tip: you can find the required information in the "Details" tab of the view.
   
-- **Task 5.** Now, let us explore the Weather dataset. Please, find out what was the highest temperature in year 2021?
+- **Task 5.** Now, let us explore the Trends dataset. Please, find out the trends for laptops (HierarchyText = 'Laptop Computer') in every months (sum up InterestOverTime by month) of year 2020. Find out months with the highest and the lowest trends.
 
 **Hint:** 
 Use the following query (substitute the <Project name> with the name of your own project):
-
-    ```
-    SELECT max(MaxTemp) FROM `<Project name>.REPORTING.Weather` where extract(YEAR from WeekStartDate) = 2021
-    ```
-
+  
+  
+  ```
+  SELECT extract(month from WeekStart) as month, HierarchyText, sum(InterestOverTime) as InterestOverTime FROM `<Project name>.REPORTING.Trends` where HierarchyText = 'Laptop Computer' and extract(year from WeekStart) = 2020 group by month, HierarchyText
+```
+  
 ### Success Criteria
 
 1. Your SQL statements to datasets are returning results and you can answer the formulated questions
@@ -165,11 +166,10 @@ Which product from the product group Electronis is sold the most in 2020?
 2. You have modified the dashboard and identified the product which was sold most often in 2020
 
 ### Tips
-In case you have time, please, try to combine the sales order data analysis with the weather dataset using Blends. Try to identify the influence of temperature on sales amounts depending on product groups.
+In case you have time, please, try to combine the sales order data analysis with the trends dataset. Analyse if there is any dependency between trends data for "Laptop Computer" search term and the sales amounts of the most often sold product in year 2020 ("DE_SPARE"). Hint: you can first build an inner join of two datasets (SalesOrders and Trends) and then export the results to the Looker Studio and continue the visual analysis from there.
 
 ### Learning Resources
 - Looker Studio documentation is available [here](https://cloud.google.com/looker-studio)
-- In case you plan to combine your sales order data with the weather dataset, please reivew [How blends work](https://support.google.com/looker-studio/answer/9061420?hl=en) in Google Cloud documentation.
 
 ## Challenge 4: No Code AI is the best AI
 
