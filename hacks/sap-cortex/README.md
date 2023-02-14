@@ -137,7 +137,7 @@ In this challenge, we will explore SAP and non-SAP data available in Cortex test
 
 ### Description
 
-**Task 1.** Analyse sales quantities by product in year 2020
+**Task 1.** Analyse sales quantities by product in year 2020.
 
 First, run the following SQL query to limit the fields we want to analyze in a dashboard:
   
@@ -163,7 +163,8 @@ See the screenshot below for your reference.
 
 Which product from the product group Electronis is sold the most in 2020?
 
-**Task 2.** Combine SAP sales data with Google public trends dataset 
+**Task 2.** Combine SAP sales data with Google public trends dataset.
+
 So far, we have explored SAP data in the Looker Studio. But the real value and interesting insights come from combining SAP and non-SAP datasets, such as Google trends. Let us explore how you can combine and visualize these data.
 
 As a preparation, let us go back to the SQL editor of BigQuery and build a quiry that combines sales orders and trends datasets. 
