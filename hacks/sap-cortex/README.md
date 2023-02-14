@@ -166,42 +166,49 @@ Which product from the product group Electronis is sold the most in 2020?
 **Task 2.** Combine SAP sales data with Google public trends dataset 
 So far, we have explored SAP data in the Looker Studio. But the real value and interesting insights come from combining SAP and non-SAP datasets, such as Google trends. Let us explore how you can combine and visualize these data.
 
-As a preparation, let us build a quiry that combines sales orders and trends datasets. For that, you can use the following SQL query:
+As a preparation, let us go back to the SQL editor of BigQuery and build a quiry that combines sales orders and trends datasets. 
+From the SalesOrders dataset, the query should select the sold quantity (CumulativeOrderQuantity_KWMENG) for the product "DE_SPARE" in the year 2020, summed up by every month.
+For the Trends dataset, the query should select trends (InterestOverTime) for the terms "Laptop Computer" (the field HierarchyText) in the year 2020, summed up by every month.
+The data from those two views should be joint by month values.
+
+To save your time, we already prepared a quiery (see below) that you can use, but feel free to try out on your own.
 
 ```
 SELECT salesOrders.month, HierarchyText, soldQuantity, InterestOverTime
-from
+FROM
 -- sales quantities for each month for the product "DE_SPARE" (belongs to the group "Electronics") in year 2020
-(SELECT extract(month from DocumentDate_AUDAT) as month, MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) as soldQuantity 
+(SELECT extract(month from DocumentDate_AUDAT) AS month, MaterialNumber_MATNR, sum(CumulativeOrderQuantity_KWMENG) AS soldQuantity 
 FROM `<Project name>.REPORTING.SalesOrders` 
-where MaterialNumber_MATNR = 'DE_SPARE' and extract(year from DocumentDate_AUDAT) = 2020 
-group by month, MaterialNumber_MATNR
-order by month) as salesOrders
+WHERE MaterialNumber_MATNR = 'DE_SPARE' AND extract(year from DocumentDate_AUDAT) = 2020 
+GROUP BY month, MaterialNumber_MATNR
+ORDER BY month) as salesOrders
 
-inner join 
+INNER JOIN 
 
 -- trends for each month for the term "Laptop Computer" in year 2020
-(SELECT extract(month from WeekStart) as month, HierarchyText, sum(InterestOverTime) as InterestOverTime 
+(SELECT extract(month from WeekStart) AS month, HierarchyText, sum(InterestOverTime) AS InterestOverTime 
 FROM `<Project name>.REPORTING.Trends` 
-where HierarchyText = 'Laptop Computer' and extract(year from WeekStart) = 2020 
-group by month, HierarchyText) as trends
+WHERE HierarchyText = 'Laptop Computer' AND extract(year from WeekStart) = 2020 
+GROUP BY month, HierarchyText) AS trends
 
-on
+ON
 salesOrders.month = trends.month
 
-order by
+ORDER BY
 month
 ```
 
-Now, we can explore the results in Looker Studio by choosing "Explore with Looker Studio".
+Now, we can explore the results in Looker Studio by choosing "Explore with Looker Studio", as it was shown in the task 1 of challenge 3.
+
+When you export the data to the Looker Studio, you will see a chart. Modify the paramenter of this chart to see the dependency of the sold units on the trends value over time as shown in the picture below.
+
+![Sold values and trends](images/Trends.png)
 
 
 ### Success Criteria
 1. You are able to export the data to the Looker Studio and see the charts
 2. You have modified the dashboard and identified the product which was sold most often in 2020
-
-### Tips
-In case you have time, please, try to combine the sales order data analysis with the trends dataset. Analyse if there is any dependency between trends data for "Laptop Computer" search term and the sales amounts of the most often sold product in year 2020 ("DE_SPARE"). Hint: you can first build an inner join of two datasets (SalesOrders and Trends) and then export the results to the Looker Studio and continue the visual analysis from there.
+3. You have modified the dashboard to analyse the dependency of sold product volumes on search trends
 
 ### Learning Resources
 - Looker Studio documentation is available [here](https://cloud.google.com/looker-studio)
