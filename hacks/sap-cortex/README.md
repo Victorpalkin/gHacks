@@ -149,7 +149,7 @@ Export the results of this query to Looker Studio by choosing "Explore Data" - "
 
 **Hint:** exporting to Looker Studio
 See the screenshot below for your reference. 
-![Export Looker Studio](images/ExportLooker.png).
+![Export Looker Studio](images/ExportLooker.png)
 
 You will now immediately see some dashboards.
   
