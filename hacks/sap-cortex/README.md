@@ -24,7 +24,7 @@ In each challenge below, you will find hints that will help you to find solution
 
 - Challenge 1: Review the pre-installed Cortex Data Foundation
 - Challenge 2: Let's start to explore
-- Challenge 3: No dashboards, no self-service analytics
+- Challenge 3: Explore the data in Looker Studio
 - Challenge 4: No Code AI is the best AI
 
 ## Prerequisites
@@ -72,13 +72,13 @@ In the next task, you will explore those datasets in more details.
 
 ### Introduction
 
-The objective of this challenge is to explore the data foundation deployed on the previous step. For this, we prepared a few questions for you, which you can answer using the data foundation views and the provided sample Cortex data. In case you are not familiar with SQL, you can use hints.
+The objective of this challenge is to explore the data foundation further. For this, we prepared a few questions for you, which you can answer using the data foundation views and the provided sample Cortex data. In case you are not familiar with SQL, you can use hints.
 
 ### Description
 
 To explore the Cortex dataset in Google BigQuery, please, answer the following questions. For some of them, you would need to run SQL queries directly in the reporting datasets. We anticipate that you might not code in your daily job and therefore, we provide ready to use SQL statements for every question as a hint. Feel free to use them! If you have SQL experience and you have time, we encourage you to come up with the solution on your own.
 
-Now, usign the  reporting views, please try to answer the following questions:
+Now, usign the reporting views, please try to answer the following questions:
 
 - **Task 1.** Find out how many different products are in the product group "002" (Electronics)
 
@@ -129,7 +129,7 @@ Use the following query (substitute the <Project name> with the name of your own
 
 - You can review the query syntax for Google BigQuery [here](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
 
-## Challenge 3: No dashboards, no self-service analytics
+## Challenge 3: Explore the data in Looker Studio
 
 ### Introduction
 In this challenge, we will explore the possibility to analyze the data using the Looker Studio. The objective of this task is to learn how to export data to Looker Studio and build simple ad-hoc dashboards.
@@ -139,7 +139,7 @@ In this challenge, we will explore the possibility to analyze the data using the
 First, run the following SQL query to limit the fields we want to analyze in a dashboard:
   
   ```
-  SELECT CumulativeOrderQuantity_KWMENG, MaterialNumber_MATNR, MaterialGroup_MATKL, DocumentDate_AUDAT as soldUnits FROM `<Project name>.REPORTING.SalesOrders`
+  SELECT CumulativeOrderQuantity_KWMENG, MaterialNumber_MATNR, MaterialGroup_MATKL, DocumentDate_AUDAT FROM `<Project name>.REPORTING.SalesOrders` 
   ```  
 
 Export the results of this query to Looker Studio by choosing "Explore Data" - "Explore with Looker Studio" in the "Query result" section.
